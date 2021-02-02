@@ -1,13 +1,13 @@
 import React from 'react';
 import {
   Avatar,
-  Button,
   Container,
   Typography,
   Grid,
   TextField,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import {Button} from '../components/Button'
 
 const styles = makeStyles((theme) => ({
   paper: {
@@ -18,7 +18,7 @@ const styles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(1, 0, 0),
-    backgroundColor:'#242424'
+    // backgroundColor:'#242424'
   },
   avatar: {
     margin: theme.spacing(3),
@@ -35,13 +35,14 @@ export function Form(props, { children }) {
           <Avatar className={classes.avatar}>{children}</Avatar>
         </Grid>
         <Grid item>
-          <Typography variant="h5">{props.header}</Typography>
+          <Typography style={{color:'#fff'}}variant="h5">{props.header}</Typography>
         </Grid>
       </Grid>
 
       {props.fields.map((field, index) => (
         <Grid item xs={12} key={index}>
           <TextField
+            style={{backgroundColor:'#fff'}}
             variant="outlined"
             margin="dense"
             required
@@ -60,17 +61,16 @@ export function Form(props, { children }) {
 
       {props.buttons.map((button, index) => (
         <Button
-          fullWidth
-          type="submit"
-          variant="contained"
-          color="primary"
-          key={index}
-          className={classes.submit}
-          disabled={button.loading}
-          onClick={button.onClick}
-        >
-          {button.text}
-        </Button>
+        className='btns'
+        buttonStyle='btn--outline'
+        buttonSize='btn--medium'
+        onClick={button.onClick}
+        key={index}
+        disabled={button.loading}
+      >
+        {button.text}
+      </Button>
+ 
       ))}
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './components/Button.css'
 import { AuthProvider } from './contexts/AuthContext';
 import { Router } from './Router';
 

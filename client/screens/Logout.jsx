@@ -33,8 +33,7 @@ export default function Logout() {
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
+ 
         <Avatar className={classes.avatar}>
           <AssignmentTurnedInIcon />
         </Avatar>
@@ -44,7 +43,7 @@ export default function Logout() {
         <Button variant="contained" onClick={handleLogout}>
           Log Out
         </Button>
-      </div>
+    
     </Container>
   );
 }

@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import GroupIcon from '@material-ui/icons/Group';
 import { useStyles } from '../components/useStyles';
 import { Form } from '../components/Form';
+import { useAPI } from '../api/api';
 import axios from 'axios';
 
 export default function SearchUsers() {
@@ -10,7 +11,8 @@ export default function SearchUsers() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { currentUser } = useAuth();
+  const { currentUser, token } = useAuth();
+  const api = useAPI();
 
   const List = () => {
     return users.map((item) => <h1>{item.email}</h1>);
@@ -25,21 +27,11 @@ export default function SearchUsers() {
     try {
       setError('');
       setLoading(true);
-      currentUser.getIdToken(true).then((idToken) => {
-        axios
-          .get(`/api/users`, {
-            headers: {
-              Authorization: 'Bearer ' + idToken,
-            },
-            params: {
-              _id:'',
-              username: name,
-            },
-          })
-          .then((resp) => {
-            setUsers(resp.data);
-          });
+
+      api.get(`users/?username=${name}`).then((resp) => {
+        setUsers(resp.data);
       });
+
     } catch (error) {
       setError('Failed search');
     }

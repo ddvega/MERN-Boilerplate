@@ -11,5 +11,5 @@ apiRouter.use('/signup', signupRouter);
 
 // top of stack == authentication middleware
 // user needs token to pass authentication layer
-apiRouter.use('/users', authMiddleWare);
+//apiRouter.use('/users', authMiddleWare);
 apiRouter.use('/users', userRouter);

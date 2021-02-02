@@ -9,15 +9,17 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
+// https://www.youtube.com/watch?v=qWy9ylc3f9U
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState('');
 
- 
+  // this a global API with auth token baked in - this way we can track the user
 
   // this is going to add a user to firebase auth as well as use the credential or uid created by firebase auth to
   // add the user to firestore. The postURL function acts as a form of frontend middleware (maybe?) between the
-  // frontend and backend. https://www.youtube.com/watch?v=qWy9ylc3f9U
+  // frontend and backend.
   async function signup(uname, uemail, password) {
     return auth.createUserWithEmailAndPassword(uemail, password).then((cred) =>
       postURL('/api/signup', {
@@ -28,7 +30,7 @@ export function AuthProvider({ children }) {
     );
   }
 
-  async function login(email, password) {
+  function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
@@ -42,11 +44,11 @@ export function AuthProvider({ children }) {
     });
   }
 
-  async function logout() {
+  function logout() {
     return auth.signOut();
   }
 
-  async function resetPassword(email) {
+  function resetPassword(email) {
     return auth.sendPasswordResetEmail(email);
   }
 
@@ -59,12 +61,16 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
+      if (user) {
+        const newToken = await user.getIdToken();
+        setToken(newToken);
+      } else {
+        setToken('');
+      }
       setLoading(false);
     });
-
-    return unsubscribe;
   }, []);
 
   const value = {
@@ -76,9 +82,12 @@ export function AuthProvider({ children }) {
     resetPassword,
     updateEmail,
     updatePassword,
+    token,
   };
 
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>
+  );
 }
 
 AuthProvider.propTypes = {
