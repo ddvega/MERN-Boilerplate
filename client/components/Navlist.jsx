@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export const Navlist = (props) => {
   const classes = useStyles();
   return (
-    <List>
+    <List className='drawer-items'>
       <ListItem button component={Link} to="/search-users" onClick={props.drawer}>
         <ListItemIcon>
           <PeopleIcon />

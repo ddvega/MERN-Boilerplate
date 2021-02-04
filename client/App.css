@@ -3,9 +3,11 @@
   margin: 0;
   padding: 0;
   font-family: 'Roboto';
-  
 }
-body{background-color: #141A26;}
+
+body {
+  background-color: #222629;
+}
 
 .home,
 .services,
@@ -18,30 +20,6 @@ body{background-color: #141A26;}
   font-size: 3rem;
 }
 
-.services {
-  background-image: url('/public/images/img-2.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+.drawer-items {
   color: #fff;
-  font-size: 100px;
 }
-
-.products {
-  background-image: url('/public/images/img-1.jpg');
-  background-position: center;
-  background-size: fill;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-
-.sign-up {
-  background-image: url('/public/images/img-8.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-

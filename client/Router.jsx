@@ -35,7 +35,7 @@ export const Router = () => {
     <>
       <BrowserRouter>
         <Navbar />
-        <Container className={classes.paper} style={{ minHeight: '100vh' }}>
+        <Container className={classes.paper}>
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <PrivateRoute path="/update-profile" component={UpdateProfile} />
