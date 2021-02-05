@@ -7,9 +7,9 @@ export function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Button component={Link} color="primary" href="/">
-        appnamehere
-      </Button>{' '}
+      <Link color="primary" to="/">
+        FlickJunkies
+      </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>

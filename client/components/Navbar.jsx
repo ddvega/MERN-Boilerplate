@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,6 +13,9 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
+import { FormControl, InputLabel, Link, Select } from '@material-ui/core';
+import MenuItem from '@material-ui/core/MenuItem';
+import CustomizedSelects from '../components/Selects';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     color: theme.palette.primary.green,
+  },
+  margin: {
+    marginLeft: theme.spacing(0),
+    minWidth: '59px',
+    boxDecorationBreak: 'none',
   },
   title: {
     flexGrow: 1,
@@ -37,10 +45,7 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
+    backgroundColor: theme.palette.background.paper,
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -83,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    paddingTop:theme.spacing()
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -93,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0),
   },
   menuButtonHidden: {
     display: 'none',
@@ -133,7 +139,8 @@ const useStyles = makeStyles((theme) => ({
 export function Navbar() {
   const classes = useStyles();
   const { currentUser } = useAuth();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [select, setSelect] = useState('lists');
 
   // handle opening and closing of app drawer
   const drawerOpen = () => {
@@ -168,6 +175,9 @@ export function Navbar() {
           <Typography className={classes.title} variant="h6" noWrap>
             FlickJunkies
           </Typography>
+
+          <CustomizedSelects />
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -182,12 +192,12 @@ export function Navbar() {
             />
           </div>
 
-          <a href="/">
+          <Link href="/">
             <i
-              style={{ color: '#fff', paddingLeft: '1.75rem', paddingRight: '.3rem', paddingTop: '.5rem' }}
-              class="fab fa-battle-net fa-2x"
+              style={{ color: '#663399', paddingLeft: '1rem', paddingRight: '.4rem', paddingTop: '.5rem' }}
+              className="fab fa-battle-net fa-2x"
             ></i>
-          </a>
+          </Link>
         </Toolbar>
       </AppBar>
       <Drawer
