@@ -1,15 +1,29 @@
 import React from 'react';
-import { Avatar, Container, Typography, Grid, TextField } from '@material-ui/core';
+import { Avatar, Container, Typography, Grid, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button } from '../components/Button';
-import { InputBox } from '../components/InputBox';
 
-
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  submit: {
+    margin: theme.spacing(1, 0, 0),
+    backgroundColor: theme.palette.primary.green,
+  },
+  avatar: {
+    margin: theme.spacing(3),
+    backgroundColor: theme.palette.primary.green,
+  },
+}));
 
 export function Form(props, { children }) {
+  const classes = useStyles();
 
   return (
-    <div >
+    <div>
       <Grid container direction="column" alignItems="center">
         <Grid item>
           <Avatar>{children}</Avatar>
@@ -22,10 +36,12 @@ export function Form(props, { children }) {
       </Grid>
 
       {props.fields.map((field, index) => (
-        <Grid item xs={12} key={index}>
-          <InputBox
-            className="input"
-            required="true"
+        <Grid item key={index}>
+          <TextField
+            className={classes.textField}
+            variant="outlined"
+            margin="dense"
+            required
             name={field.name}
             label={field.label}
             type={field.type}
@@ -40,12 +56,14 @@ export function Form(props, { children }) {
 
       {props.buttons.map((button, index) => (
         <Button
-          className="btns"
-          buttonStyle="btn--outline"
-          buttonSize="btn--medium"
-          onClick={button.onClick}
+          fullWidth
+          type="submit"
+          variant="outlined"
+          color="primary"
           key={index}
+          className={classes.submit}
           disabled={button.loading}
+          onClick={button.onClick}
         >
           {button.text}
         </Button>

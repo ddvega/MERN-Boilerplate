@@ -1,24 +1,18 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import { useAuth } from '../contexts/AuthContext';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Navlist } from '../components/Navlist';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
-import { TrainRounded } from '@material-ui/icons';
-import '../styles/Navbar.css';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -28,13 +22,16 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
+  logo: {
+    color: theme.palette.primary.green,
+  },
   title: {
     flexGrow: 1,
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
-    color:'#86c232'
+    color: theme.palette.primary.green,
   },
 
   search: {
@@ -122,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   toolbar: {
-    paddingRight: 24,
+    paddingRight: 14,
   },
   toolbarIcon: {
     display: 'flex',
@@ -153,7 +150,8 @@ export function Navbar() {
     <>
       <AppBar
         position="sticky"
-        style={{ background: 'linear-gradient(90deg, #222629 0%, #242424 100%)' }}
+        color="transparent"
+        elevation={0}
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
         <Toolbar className={classes.toolbar}>
@@ -183,10 +181,17 @@ export function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+
+          <a href="/">
+            <i
+              style={{ color: '#fff', paddingLeft: '1.75rem', paddingRight: '.3rem', paddingTop: '.5rem' }}
+              class="fab fa-battle-net fa-2x"
+            ></i>
+          </a>
         </Toolbar>
       </AppBar>
       <Drawer
-        styles={{background:'linear-gradient(90deg, #222629 0%, #222629 100%);'}}
+        styles={{ background: 'linear-gradient(90deg, #222629 0%, #222629 100%);' }}
         variant="temporary"
         classes={{
           paper: clsx('navbar', classes.drawerPaper, !open && classes.drawerPaperClose),

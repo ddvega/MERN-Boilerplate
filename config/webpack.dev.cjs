@@ -20,6 +20,7 @@ module.exports = merge(common, {
     compress: true,
     hot: true,
     port: 3000,
+    host: '0.0.0.0',
     proxy: {
       '/api': `http://localhost:${process.env.PORT}`,
     },

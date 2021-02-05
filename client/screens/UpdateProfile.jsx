@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import PersonIcon from '@material-ui/icons/Person';
 import { useAuth } from '../contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
-import { useStyles } from '../components/useStyles';
 import {Form} from '../components/Form'
 
 
 export default function UpdateProfile() {
-  const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setconfPassword] = useState('');

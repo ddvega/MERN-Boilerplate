@@ -21,8 +21,7 @@ const styles = makeStyles((theme) => ({
     display: 'flex',
   },
   paper: {
-    // backgroundColor:'#141A26',
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(3),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -34,21 +33,24 @@ export const Router = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
-        <Container className={classes.paper}>
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            <PrivateRoute path="/update-profile" component={UpdateProfile} />
-            <PrivateRoute path="/search-users" component={SearchUsers} />
-            <PrivateRoute path="/logout" component={Logout} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
-            <Route path="/forgot-password" component={ForgotPassword} />
-          </Switch>
-          <Box mt={5}>
-            <Copyright />
-          </Box>
-        </Container>
+        <ThemeProvider theme={theme}>
+        <CssBaseline />
+          <Navbar />
+          <Container className={classes.paper}>
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <PrivateRoute path="/update-profile" component={UpdateProfile} />
+              <PrivateRoute path="/search-users" component={SearchUsers} />
+              <PrivateRoute path="/logout" component={Logout} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+              <Route path="/forgot-password" component={ForgotPassword} />
+            </Switch>
+            <Box mt={5}>
+              <Copyright />
+            </Box>
+          </Container>
+        </ThemeProvider>
       </BrowserRouter>
     </>
   );

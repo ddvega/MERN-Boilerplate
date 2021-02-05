@@ -70,7 +70,7 @@ export default function Login() {
             onClick: handleLogin,
           },
           {
-            text: 'Log In with Google',
+            text: 'Google Log in',
             onClick: handleGoogleLogin,
           },
         ]}

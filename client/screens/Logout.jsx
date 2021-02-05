@@ -3,17 +3,15 @@ import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import { useAuth } from '../contexts/AuthContext';
 import { Alert } from '@material-ui/lab';
 import { useHistory } from 'react-router-dom';
-import {Copyright} from '../components/Copyright';
-import { useStyles } from '../components/useStyles';
+import { makeStyles } from '@material-ui/core/styles';
+import { Avatar, Button, Container, Typography } from '@material-ui/core';
 
-import {
-  Avatar,
-  Button,
-  Container,
-  Box,
-  Typography,
-  CssBaseline,
-} from '@material-ui/core';
+const useStyles = makeStyles((theme) => ({
+  avatar: {
+    margin: theme.spacing(3),
+    backgroundColor: theme.palette.primary.green,
+  },
+}));
 
 export default function Logout() {
   const classes = useStyles();
@@ -33,17 +31,15 @@ export default function Logout() {
 
   return (
     <Container component="main" maxWidth="xs">
- 
-        <Avatar className={classes.avatar}>
-          <AssignmentTurnedInIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5"></Typography>
-        {error && <Alert variant="danger">{error}</Alert>}
+      <Avatar className={classes.avatar}>
+        <AssignmentTurnedInIcon />
+      </Avatar>
+      <Typography component="h1" variant="h5"></Typography>
+      {error && <Alert variant="danger">{error}</Alert>}
 
-        <Button variant="contained" onClick={handleLogout}>
-          Log Out
-        </Button>
-    
+      <Button variant="contained" onClick={handleLogout}>
+        Log Out
+      </Button>
     </Container>
   );
 }
