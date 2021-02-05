@@ -16,7 +16,7 @@ const DropDownInput = withStyles((theme) => ({
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
     fontSize: 12,
-    fontFamily:'Segoe UI',
+    fontFamily: 'Segoe UI',
     padding: '8px 12px 8px 8px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
   },
@@ -28,20 +28,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CustomizedSelects() {
+export default function CustomizedSelects(props) {
   const classes = useStyles();
   const [value, setValue] = useState('lists');
-  const handleChange = (event) => {
-    setValue(event.target.value);
+
+  // sets the value inside of the dropdown menu
+  const handleChange = (value) => {
+    setValue(value);
   };
   return (
     <div>
       <FormControl className={classes.margin}>
         <Select
-          labelId="demo-customized-select-label"
-          id="demo-customized-select"
           value={value}
-          onChange={handleChange}
+          onChange={(e) => {
+            // console.log(`from select -- ${e.target.value}`);
+            props.fields.onChange(e.target.value);
+            handleChange(e.target.value);
+          }}
           input={<DropDownInput />}
         >
           <MenuItem value={'lists'}>Lists</MenuItem>

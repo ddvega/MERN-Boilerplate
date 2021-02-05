@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    paddingTop:theme.spacing()
+    paddingTop: theme.spacing(),
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -140,7 +140,13 @@ export function Navbar() {
   const classes = useStyles();
   const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
-  const [select, setSelect] = useState('lists');
+  // const [select, setSelect] = useState('lists');
+  const [dVal, setDVal] = useState('lists');
+
+  const handleDropDownVal = (value) => {
+    setDVal(value);
+    // console.log(`from Navbar=${value}`);
+  };
 
   // handle opening and closing of app drawer
   const drawerOpen = () => {
@@ -176,7 +182,8 @@ export function Navbar() {
             FlickJunkies
           </Typography>
 
-          <CustomizedSelects />
+          {/* pass function as prop to set dVal in a callback */}
+          <CustomizedSelects fields={{ onChange: handleDropDownVal }} />
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>
