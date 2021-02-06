@@ -83,6 +83,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(0),
+    marginLeft: theme.spacing(.4)
   },
   menuButtonHidden: {
     display: 'none',

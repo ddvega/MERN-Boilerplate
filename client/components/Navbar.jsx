@@ -10,22 +10,20 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
-import {  Link} from '@material-ui/core';
-import {CustomSelect} from "./CustomSelect";
-import { Navlist } from "./Navlist";
-import {useStyles} from '../styles/navbarStyles'
+import { Link } from '@material-ui/core';
+import { CustomSelect } from './CustomSelect';
+import { Navlist } from './Navlist';
+import { useStyles } from '../styles/navbarStyles';
 
-
-
-export function Navbar() {
+export const Navbar = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   // const [select, setSelect] = useState('lists');
   const [dVal, setDVal] = useState('lists');
 
   const handleDropDownVal = (value) => {
+    console.log(value);
     setDVal(value);
-    console.log(`from Navbar=${value}`);
   };
 
   // handle opening and closing of app drawer
@@ -37,8 +35,7 @@ export function Navbar() {
     setOpen(false);
   };
 
-  const menuItems = ['lists', 'movies', 'actors']
-
+  const menuItems = ['lists', 'movies', 'actors'];
 
   return (
     <>
@@ -56,15 +53,15 @@ export function Navbar() {
             onClick={drawerOpen}
             className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
           >
-            <MenuIcon />
+            <i className="fas fa-bars fa-lg" />
           </IconButton>
 
-          <Typography className={classes.title} variant="h6" noWrap>
-            FlickJunkies
+          <Typography className={classes.title} variant="h4" noWrap>
+            {props.appName}
           </Typography>
 
           {/* pass function as prop to set dVal in a callback */}
-          <CustomSelect fields={{ onChange: handleDropDownVal, menu:menuItems }} />
+          <CustomSelect onChange={handleDropDownVal} menu={menuItems} />
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -82,14 +79,13 @@ export function Navbar() {
 
           <Link href="/">
             <i
-              style={{ color: '#663399', paddingLeft: '1rem', paddingRight: '.4rem', paddingTop: '.5rem' }}
-              className="fab fa-battle-net fa-2x"
+              style={{ color: '#663399', paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '.5rem' }}
+              className="fab fa-battle-net fa-3x"
             />
           </Link>
-
         </Toolbar>
       </AppBar>
-      
+
       <Drawer
         styles={{ background: 'linear-gradient(90deg, #222629 0%, #222629 100%);' }}
         variant="temporary"
@@ -109,4 +105,4 @@ export function Navbar() {
       </Drawer>
     </>
   );
-}
+};

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function Form(props, { children }) {
+export const Form = (props, { children }) => {
   const classes = useStyles();
 
   return (
@@ -70,4 +70,4 @@ export function Form(props, { children }) {
       ))}
     </div>
   );
-}
+};

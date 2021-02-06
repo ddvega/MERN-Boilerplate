@@ -24,6 +24,8 @@ const styles = makeStyles((t) => ({
   },
 }));
 
+const appName = 'AppName';
+
 export const Router = () => {
   const classes = styles();
   return (
@@ -31,7 +33,7 @@ export const Router = () => {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Navbar />
+          <Navbar appName={appName} />
           <Container className={classes.paper}>
             <Switch>
               <Route exact path="/" component={Dashboard} />
@@ -43,7 +45,7 @@ export const Router = () => {
               <Route path="/forgot-password" component={ForgotPassword} />
             </Switch>
             <Box mt={5}>
-              <Copyright />
+              <Copyright appName={appName} />
             </Box>
           </Container>
         </ThemeProvider>
