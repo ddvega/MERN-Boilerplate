@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function CustomizedSelects(props) {
+export function CustomSelect(props) {
   const classes = useStyles();
   const [value, setValue] = useState('lists');
 
@@ -42,15 +42,14 @@ export function CustomizedSelects(props) {
         <Select
           value={value}
           onChange={(e) => {
-            // console.log(`from select -- ${e.target.value}`);
             props.fields.onChange(e.target.value);
             handleChange(e.target.value);
           }}
           input={<DropDownInput />}
         >
-          <MenuItem value='lists'>Lists</MenuItem>
-          <MenuItem value='movies'>Movies</MenuItem>
-          <MenuItem value='actors'>Actors</MenuItem>
+          {props.fields.menu.map((field, index) => (
+            <MenuItem value={field}>{field}</MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>
