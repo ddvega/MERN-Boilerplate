@@ -28,13 +28,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CustomizedSelects(props) {
+export function CustomizedSelects(props) {
   const classes = useStyles();
   const [value, setValue] = useState('lists');
 
   // sets the value inside of the dropdown menu
-  const handleChange = (value) => {
-    setValue(value);
+  const handleChange = (val) => {
+    setValue(val);
   };
   return (
     <div>
@@ -48,9 +48,9 @@ export default function CustomizedSelects(props) {
           }}
           input={<DropDownInput />}
         >
-          <MenuItem value={'lists'}>Lists</MenuItem>
-          <MenuItem value={'movies'}>Movies</MenuItem>
-          <MenuItem value={'actors'}>Actors</MenuItem>
+          <MenuItem value='lists'>Lists</MenuItem>
+          <MenuItem value='movies'>Movies</MenuItem>
+          <MenuItem value='actors'>Actors</MenuItem>
         </Select>
       </FormControl>
     </div>

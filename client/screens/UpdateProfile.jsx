@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import PersonIcon from '@material-ui/icons/Person';
-import { useAuth } from '../contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
-import {Form} from '../components/Form'
+import { useAuth } from '../contexts/AuthContext';
+import { Form } from '../components/Form';
 
-
-export default function UpdateProfile() {
+export function UpdateProfile() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setconfPassword] = useState('');
@@ -24,6 +23,7 @@ export default function UpdateProfile() {
     setconfPassword(value);
   };
 
+  // eslint-disable-next-line consistent-return
   function handleSubmit(e) {
     e.preventDefault();
     if (password !== confPassword) {
@@ -51,6 +51,7 @@ export default function UpdateProfile() {
       .finally(() => {
         setLoading(false);
       });
+    return false;
   }
 
   return (

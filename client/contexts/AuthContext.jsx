@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
   // frontend and backend.
   async function signup(uname, uemail, password) {
     return auth.createUserWithEmailAndPassword(uemail, password).then((cred) =>
-      postURL('/api/signup', {
+      postURL('/api/users', {
         uid: cred.user.uid,
         username: uname,
         email: uemail,
@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
 
   async function loginWithGoogle() {
     return auth.signInWithPopup(googleProvider).then((cred) => {
-      postURL('/api/signup', {
+      postURL('/api/users', {
         uid: cred.user.uid,
         username: cred.user.displayName,
         email: cred.user.email,

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useAuth } from '../contexts/AuthContext';
 import { Form } from '../components/Form';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-export default function Login() {
+export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login, loginWithGoogle } = useAuth();

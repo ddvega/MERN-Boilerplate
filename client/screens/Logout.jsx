@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
-import { useAuth } from '../contexts/AuthContext';
 import { Alert } from '@material-ui/lab';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, Container, Typography } from '@material-ui/core';
+import { useAuth } from '../contexts/AuthContext';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Logout() {
+// export function Logout() {
+export const Logout = () => {
   const classes = useStyles();
   const [error, setError] = useState('');
   const { logout } = useAuth();
@@ -24,9 +25,10 @@ export default function Logout() {
     try {
       logout();
       history.push('/login');
-    } catch {
+    } catch (err) {
       setError('Failed to log out');
     }
+    return 0;
   }
 
   return (
@@ -42,4 +44,4 @@ export default function Logout() {
       </Button>
     </Container>
   );
-}
+};

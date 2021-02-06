@@ -3,15 +3,13 @@ import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 // https://github.com/WebDevSimplified/React-Firebase-Auth
-export default function PrivateRoute({ component: Component, ...rest }) {
+export function PrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
 
   return (
     <Route
       {...rest}
-      render={(props) => {
-        return currentUser ? <Component {...props} /> : <Redirect to="/login" />;
-      }}
-    ></Route>
+      render={(props) => currentUser ? <Component {...props} /> : <Redirect to="/login" />}
+     />
   );
 }

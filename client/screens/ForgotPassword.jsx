@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useAuth } from '../contexts/AuthContext';
 import { Form } from '../components/Form';
 
-export default function ForgotPassword() {
+export function ForgotPassword() {
   const { resetPassword } = useAuth();
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
@@ -24,11 +24,12 @@ export default function ForgotPassword() {
       setLoading(true);
       await resetPassword(email);
       setMessage('Check your inbox for further instructions');
-    } catch {
+    } catch (err) {
       setError('Failed to reset password');
     }
 
     setLoading(false);
+    return 0;
   }
 
   return (
@@ -42,13 +43,13 @@ export default function ForgotPassword() {
           id: 'email',
           autoComplete: 'email',
           onChange: handleEmailChange,
-        }
+        },
       ]}
       buttons={[
         {
           text: 'Reset',
           onClick: handleSubmit,
-        }
+        },
       ]}
     >
       <LockOutlinedIcon />

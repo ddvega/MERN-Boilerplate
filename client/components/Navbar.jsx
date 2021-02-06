@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
-import { useAuth } from '../contexts/AuthContext';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { Navlist } from '../components/Navlist';
 import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
-import { FormControl, InputLabel, Link, Select } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
-import CustomizedSelects from '../components/Selects';
+import {  Link} from '@material-ui/core';
+import {CustomizedSelects} from "./Selects";
+import { Navlist } from "./Navlist";
+
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -138,7 +137,6 @@ const useStyles = makeStyles((theme) => ({
 
 export function Navbar() {
   const classes = useStyles();
-  const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
   // const [select, setSelect] = useState('lists');
   const [dVal, setDVal] = useState('lists');
@@ -157,7 +155,6 @@ export function Navbar() {
     setOpen(false);
   };
 
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <>
@@ -203,7 +200,7 @@ export function Navbar() {
             <i
               style={{ color: '#663399', paddingLeft: '1rem', paddingRight: '.4rem', paddingTop: '.5rem' }}
               className="fab fa-battle-net fa-2x"
-            ></i>
+            />
           </Link>
         </Toolbar>
       </AppBar>

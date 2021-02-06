@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import { useAuth } from '../contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
-import {Form} from '../components/Form'
+import { useAuth } from '../contexts/AuthContext';
+import { Form } from '../components/Form';
 
-
-export default function SignUp() {
+export function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,11 +42,12 @@ export default function SignUp() {
       await signup(name, email, password);
       setMessage('Account successfully created!');
       history.push('/');
-    } catch {
+    } catch (err){
       setError('Failed to create an account');
     }
 
     setLoading(false);
+    return 0
   }
 
   return (

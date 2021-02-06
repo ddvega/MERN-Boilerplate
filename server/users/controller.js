@@ -9,11 +9,11 @@ export const getUser = async (userQuery) => {
     const name = await User.findById(_id);
     console.log(name);
     return name;
-  } else {
+  } 
     const userList = await User.find({ username: { $regex: username } });
     console.log(userList);
     return userList;
-  }
+  
 };
 
 // add users to mongoDB
@@ -26,7 +26,7 @@ export const addUser = async (user) => {
 
   // check if user is already in the database
   // if user already exists, it is likely a third party login.
-  //No need to try to add them to the database everytime they login.
+  // No need to try to add them to the database everytime they login.
   const doesUserExit = await User.exists({ _id: newUser._id });
 
   if (!doesUserExit) {
