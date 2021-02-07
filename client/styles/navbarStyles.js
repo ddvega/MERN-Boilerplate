@@ -74,7 +74,6 @@ export const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(),
   },
   appBarShift: {
-    marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -89,7 +88,6 @@ export const useStyles = makeStyles((theme) => ({
     display: 'none',
   },
   drawerPaper: {
-    position: 'relative',
     whiteSpace: 'nowrap',
     width: drawerWidth,
     transition: theme.transitions.create('width', {

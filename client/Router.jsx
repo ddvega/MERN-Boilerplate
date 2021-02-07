@@ -29,27 +29,25 @@ const appName = 'AppName';
 export const Router = () => {
   const classes = styles();
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Navbar appName={appName} />
-          <Container className={classes.paper}>
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <PrivateRoute path="/search-users" component={SearchUsers} />
-              <PrivateRoute path="/logout" component={Logout} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/login" component={Login} />
-              <Route path="/forgot-password" component={ForgotPassword} />
-            </Switch>
-            <Box mt={5}>
-              <Copyright appName={appName} />
-            </Box>
-          </Container>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <PrivateRoute path="/update-profile" component={UpdateProfile} />
+            <PrivateRoute path="/search-users" component={SearchUsers} />
+            <PrivateRoute path="/logout" component={Logout} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={Login} />
+            <Route path="/forgot-password" component={ForgotPassword} />
+          </Switch>
+          <Box mt={5}>
+            <Copyright appName={appName} />
+          </Box>
         </ThemeProvider>
-      </BrowserRouter>
-    </>
+      </>
+    </BrowserRouter>
   );
 };

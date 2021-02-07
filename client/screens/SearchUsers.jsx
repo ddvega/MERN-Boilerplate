@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
 import GroupIcon from '@material-ui/icons/Group';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container, Box } from '@material-ui/core';
 import { ErrorMessage } from 'formik';
 import { Form } from '../components/Form';
 import { useAPI } from '../api/api';
 
+const useStyles = makeStyles((t) => ({
+  paper: {
+    marginTop: t.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+}));
+
 export function SearchUsers() {
+  const classes = useStyles();
+
   const [name, setName] = useState('');
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
@@ -33,7 +46,7 @@ export function SearchUsers() {
   };
 
   return (
-    <>
+    <Container className={classes.paper}>
       <Form
         header="Search Users"
         fields={[
@@ -56,6 +69,6 @@ export function SearchUsers() {
         <GroupIcon />
       </Form>
       <List />
-    </>
+    </Container>
   );
 }

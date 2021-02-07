@@ -46,16 +46,12 @@ export const Navbar = (props) => {
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
         <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={drawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
-            <i className="fas fa-bars fa-lg" />
-          </IconButton>
-
+          <Link href="/">
+            <i
+              style={{ color: '#663399', paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '.5rem' }}
+              className="fab fa-battle-net fa-3x"
+            />
+          </Link>
           <Typography className={classes.title} variant="h4" noWrap>
             {props.appName}
           </Typography>
@@ -77,17 +73,21 @@ export const Navbar = (props) => {
             />
           </div>
 
-          <Link href="/">
-            <i
-              style={{ color: '#663399', paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '.5rem' }}
-              className="fab fa-battle-net fa-3x"
-            />
-          </Link>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="open drawer"
+            onClick={drawerOpen}
+            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+          >
+            <i className="fas fa-bars fa-lg" />
+          </IconButton>
         </Toolbar>
       </AppBar>
 
       <Drawer
         styles={{ background: 'linear-gradient(90deg, #222629 0%, #222629 100%);' }}
+        anchor="right"
         variant="temporary"
         classes={{
           paper: clsx('navbar', classes.drawerPaper, !open && classes.drawerPaperClose),
