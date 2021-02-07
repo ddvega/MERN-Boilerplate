@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import GroupIcon from '@material-ui/icons/Group';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Box } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { ErrorMessage } from 'formik';
 import { Form } from '../components/Form';
 import { useAPI } from '../api/api';

@@ -5,7 +5,7 @@ export const theme = createMuiTheme({
     type: 'dark',
     primary: {
       main: '#242424',
-      green:'#86c232'
+      green: '#86c232',
     },
     background: {
       default: '#121212',
@@ -14,10 +14,8 @@ export const theme = createMuiTheme({
     secondary: {
       main: '#f50004',
     },
-   
   },
   typography: {
     fontFamily: 'Roboto',
   },
-
 });

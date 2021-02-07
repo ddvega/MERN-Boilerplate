@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
 import PersonIcon from '@material-ui/icons/Person';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { Form } from '../components/Form';
 
+const useStyles = makeStyles((t) => ({
+  paper: {
+    marginTop: t.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+}));
 export function UpdateProfile() {
+  const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setconfPassword] = useState('');
@@ -55,42 +66,44 @@ export function UpdateProfile() {
   }
 
   return (
-    <Form
-      header="Update Profile"
-      fields={[
-        {
-          name: 'email',
-          label: 'email',
-          type: 'email',
-          id: 'email',
-          autoComplete: 'email',
-          onChange: handleEmail,
-        },
-        {
-          name: 'password',
-          label: 'password',
-          type: 'password',
-          id: 'password',
-          autoComplete: 'password',
-          onChange: handlePassword,
-        },
-        {
-          name: 'confpassword',
-          label: 'confirm password',
-          type: 'password',
-          id: 'confpassword',
-          autoComplete: 'confpassword',
-          onChange: handleConfPassword,
-        },
-      ]}
-      buttons={[
-        {
-          text: 'Submit',
-          onClick: handleSubmit,
-        },
-      ]}
-    >
-      <PersonIcon />
-    </Form>
+    <Container className={classes.paper}>
+      <Form
+        header="Update Profile"
+        fields={[
+          {
+            name: 'email',
+            label: 'email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email',
+            onChange: handleEmail,
+          },
+          {
+            name: 'password',
+            label: 'password',
+            type: 'password',
+            id: 'password',
+            autoComplete: 'password',
+            onChange: handlePassword,
+          },
+          {
+            name: 'confpassword',
+            label: 'confirm password',
+            type: 'password',
+            id: 'confpassword',
+            autoComplete: 'confpassword',
+            onChange: handleConfPassword,
+          },
+        ]}
+        buttons={[
+          {
+            text: 'Submit',
+            onClick: handleSubmit,
+          },
+        ]}
+      >
+        <PersonIcon />
+      </Form>
+    </Container>
   );
 }

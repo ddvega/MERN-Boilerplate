@@ -5,20 +5,19 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
-import { Link } from '@material-ui/core';
+
 import { CustomSelect } from './CustomSelect';
 import { Navlist } from './Navlist';
 import { useStyles } from '../styles/navbarStyles';
+import { Link } from 'react-router-dom';
 
 export const Navbar = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  // const [select, setSelect] = useState('lists');
   const [dVal, setDVal] = useState('lists');
 
   const handleDropDownVal = (value) => {
@@ -46,7 +45,7 @@ export const Navbar = (props) => {
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
         <Toolbar className={classes.toolbar}>
-          <Link href="/">
+          <Link to="/">
             <i
               style={{ color: '#663399', paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '.5rem' }}
               className="fab fa-battle-net fa-3x"

@@ -48,7 +48,7 @@ export const CustomSelect = (props) => {
           input={<DropDownInput />}
         >
           {props.menu.map((field, index) => (
-            <MenuItem value={field}>{field}</MenuItem>
+            <MenuItem value={field} key={index}>{field}</MenuItem>
           ))}
         </Select>
       </FormControl>

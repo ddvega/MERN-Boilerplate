@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
 import { useAuth } from '../contexts/AuthContext';
 import { Form } from '../components/Form';
 
+const useStyles = makeStyles((t) => ({
+  paper: {
+    marginTop: t.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+}));
+
 export function Login() {
+  const classes = useStyles();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login, loginWithGoogle } = useAuth();
@@ -43,7 +56,7 @@ export function Login() {
   }
 
   return (
-    <>
+    <Container className={classes.paper}>
       <Form
         header="Log In"
         fields={[
@@ -78,6 +91,6 @@ export function Login() {
         <AccountCircleIcon />
       </Form>
       <Link to="/signup">Need an account? Sign up here</Link>
-    </>
+    </Container>
   );
 }

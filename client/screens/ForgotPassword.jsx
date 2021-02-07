@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
 import { useAuth } from '../contexts/AuthContext';
 import { Form } from '../components/Form';
 
+const useStyles = makeStyles((t) => ({
+  paper: {
+    marginTop: t.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+}));
 export function ForgotPassword() {
+  const classes = useStyles();
   const { resetPassword } = useAuth();
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
@@ -33,6 +44,7 @@ export function ForgotPassword() {
   }
 
   return (
+    <Container className={classes.paper}>
     <Form
       header="Password Reset"
       fields={[
@@ -54,5 +66,6 @@ export function ForgotPassword() {
     >
       <LockOutlinedIcon />
     </Form>
+    </Container>
   );
 }
