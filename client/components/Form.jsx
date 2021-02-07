@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(1, 0, 0),
     backgroundColor: theme.palette.primary.green,
+    '&:hover': {
+      backgroundColor: '#663399',
+    },
   },
   avatar: {
     margin: theme.spacing(3),
